@@ -5,7 +5,13 @@ This repository contains code used throughout the Sui Community Modules.
 
 Notes:
 
+Check grouped balances:
 
+`sui client balance`
+
+Check raw balance:
+
+`sui client split-coin --coin-id 0xbe140061ee69ce2b64fdeaf495e0e192fc153c0d35d132c79ddab85e96803c05 --amounts 12`
 
 Publish: 
 
