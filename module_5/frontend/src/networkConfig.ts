@@ -12,13 +12,13 @@ const { networkConfig, useNetworkVariable, useNetworkVariables } =
     testnet: {
       url: getFullnodeUrl("testnet"),
       variables: {
-        packageId: import.meta.env.VITE_PACKAGE_ID, // TODO: Get package ID from instructor
+        packageId: "0xc3f4000d02137040e8548e4585ec45e94ae6462df162da2ad5ced2541d5981c2", // TODO: Get package ID from instructor
       },
     },
     mainnet: {
       url: getFullnodeUrl("mainnet"),
       variables: {
-        packageId: "", // TODO: Get package ID from instructor
+        packageId: "0xc3f4000d02137040e8548e4585ec45e94ae6462df162da2ad5ced2541d5981c2", // TODO: Get package ID from instructor
       },
     },
   });
