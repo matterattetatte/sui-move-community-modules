@@ -4,6 +4,9 @@ module module_3::module_3_tests {
     use sui::test_scenario::{Self as ts, next_tx};
     use sui::coin;
     use sui::sui::SUI;
+    use module_3::hero::create_hero;
+    use module_3::hero::list_hero;
+    use module_3::hero::HeroListed;
 
     // Error codes for assertions
     const EHeroNameMismatch: u64 = 1;
@@ -12,6 +15,7 @@ module module_3::module_3_tests {
     const EHeroNotCreated: u64 = 4;
     const EHeroNotTransferred: u64 = 5;
     const EListHeroNotShared: u64 = 6;
+    const EInvalidEvents: u64 = 7;
 
     const SENDER: address = @0x1;
     const RECIPIENT: address = @0x2;
@@ -157,5 +161,21 @@ module module_3::module_3_tests {
 
         ts::end(scenario);
     }
+    #[test]
+    fun test_events_emitted() {
+        let mut test = ts::begin(SENDER);
 
+        create_hero(b"My Hero".to_string(), b"Example Image URL".to_string(), 123, test.ctx());
+
+        test.next_tx(SENDER);
+
+        let hero = test.take_from_sender<Hero>();
+        list_hero(hero, 10000, test.ctx());
+        let events = sui::event::events_by_type<HeroListed>();
+        assert!(events.length()==1, EInvalidEvents);
+
+        test.next_tx(SENDER);
+
+        test.end();
+    }
 }
