@@ -38,4 +38,6 @@ Testing:
 `sui move test`
 
 
+Upload token
 
+`sui client ptb --move-call 0x48a314ebe826237def4e702c6f21464fad6fa89a618933a5c9fc2bc5a22dbecf::token::create_gold 0xc`

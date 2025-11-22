@@ -9,6 +9,8 @@ export const transferHero = (packageId: string, heroId: string, to: string) => {
   // Hints:
   // - Use tx.object() for object IDs
   // - Use tx.pure.address() for addresses
+
+  tx.transferObjects([tx.object(heroId)], tx.pure.address(to));
   
   return tx;
 };
